@@ -1,4 +1,5 @@
 ﻿using PersonalTracking.DB;
+using PersonalTracking.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,19 @@ namespace PersonalTracking.Views
         public DepartmentList()
         {
             InitializeComponent();
+            Update();
+
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            DepartmentPage page = new DepartmentPage();
+            page.ShowDialog();
+            Update();
+        }
+
+        public void Update()
+        {
             using (PERSONELTRACKINGContext db = new PERSONELTRACKINGContext())
             {
                 List<Department> list = db.Departments.ToList();

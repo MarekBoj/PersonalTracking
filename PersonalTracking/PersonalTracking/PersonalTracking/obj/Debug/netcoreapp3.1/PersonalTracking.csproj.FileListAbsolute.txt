@@ -61,3 +61,5 @@ C:\Users\Marek\PersonalTracking\PersonalTracking\PersonalTracking\PersonalTracki
 C:\Users\Marek\PersonalTracking\PersonalTracking\PersonalTracking\PersonalTracking\obj\Debug\netcoreapp3.1\Views\DepartmentList.g.cs
 C:\Users\Marek\PersonalTracking\PersonalTracking\PersonalTracking\PersonalTracking\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 C:\Users\Marek\PersonalTracking\PersonalTracking\PersonalTracking\PersonalTracking\obj\Debug\netcoreapp3.1\Views\DepartmentList.baml
+C:\Users\Marek\PersonalTracking\PersonalTracking\PersonalTracking\PersonalTracking\obj\Debug\netcoreapp3.1\Pages\DepartmentPage.g.cs
+C:\Users\Marek\PersonalTracking\PersonalTracking\PersonalTracking\PersonalTracking\obj\Debug\netcoreapp3.1\Pages\DepartmentPage.baml

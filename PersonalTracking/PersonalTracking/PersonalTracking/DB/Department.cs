@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonalTracking.Windows;
+using System;
 using System.Collections.Generic;
 
 #nullable disable
@@ -18,5 +19,10 @@ namespace PersonalTracking.DB
 
         public virtual ICollection<Employee> Employees { get; set; }
         public virtual ICollection<Position> Positions { get; set; }
+
+        public static implicit operator Department(DepartmentPage v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
