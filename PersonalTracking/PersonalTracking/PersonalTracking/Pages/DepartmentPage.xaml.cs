@@ -19,9 +19,12 @@ namespace PersonalTracking.Windows
     /// </summary>
     public partial class DepartmentPage : Window
     {
+
+        public Department department;
         public DepartmentPage()
         {
             InitializeComponent();
+
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -33,17 +36,37 @@ namespace PersonalTracking.Windows
         {
             if (txtDepartmentName.Text.Trim() == "")
                 MessageBox.Show("Please fill the department Name area");
-            else
+            else 
             {
                 using(PERSONELTRACKINGContext db = new PERSONELTRACKINGContext())
                 {
-                    Department dpt = new Department();
-                    dpt.DepartmentName = txtDepartmentName.Text;
-                    db.Departments.Add(dpt);
-                    db.SaveChanges();
-                    txtDepartmentName.Clear();
-                    MessageBox.Show("Department was Added");
+                    if (department != null && department.Id != 0)
+                    {
+                        Department update = new Department();
+                        update.DepartmentName = txtDepartmentName.Text;
+                        update.Id = department.Id;
+                        db.Departments.Update(update);
+                        db.SaveChanges();
+                        MessageBox.Show("Update was succesful");
+                    }
+                    else
+                    {
+                        Department dpt = new Department();
+                        dpt.DepartmentName = txtDepartmentName.Text;
+                        db.Departments.Add(dpt);
+                        db.SaveChanges();
+                        txtDepartmentName.Clear();
+                        MessageBox.Show("Department was Added");
+                    }
                 }
+            }
+        }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            if (department != null && department.Id != 0)
+            {
+                txtDepartmentName.Text = department.DepartmentName;
             }
         }
     }

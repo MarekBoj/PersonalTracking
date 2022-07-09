@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonalTracking.Windows"
         mc:Ignorable="d"
-        Title="Department Page" WindowStartupLocation="CenterScreen" Height="200" Width="350" ResizeMode="NoResize" FontSize="18" FontWeight="Bold">
+        Title="Department Page" WindowStartupLocation="CenterScreen" Height="200" Width="350" ResizeMode="NoResize" FontSize="18" FontWeight="Bold" Loaded="Window_Loaded_1">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

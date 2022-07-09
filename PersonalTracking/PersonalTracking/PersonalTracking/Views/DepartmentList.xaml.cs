@@ -21,6 +21,14 @@ namespace PersonalTracking.Views
     /// </summary>
     public partial class DepartmentList : UserControl
     {
+        public void Update()
+        {
+            using (PERSONELTRACKINGContext db = new PERSONELTRACKINGContext())
+            {
+                List<Department> list = db.Departments.ToList();
+                gridDepartment.ItemsSource = list;
+            }
+        }
         public DepartmentList()
         {
             InitializeComponent();
@@ -35,13 +43,13 @@ namespace PersonalTracking.Views
             Update();
         }
 
-        public void Update()
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            using (PERSONELTRACKINGContext db = new PERSONELTRACKINGContext())
-            {
-                List<Department> list = db.Departments.ToList();
-                gridDepartment.ItemsSource = list;
-            }
+            Department dpt = (Department)gridDepartment.SelectedItem;
+            DepartmentPage page = new DepartmentPage();
+            page.department = dpt;
+            page.ShowDialog();
+            Update();
         }
     }
 }
