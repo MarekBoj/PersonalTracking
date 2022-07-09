@@ -4,9 +4,123 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonalTracking"
+        xmlns:views="clr-namespace:PersonalTracking.Views"
+        xmlns:vievmodels="clr-namespace:PersonalTracking.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="WPF Personal Tracking" Name="PersonaMainWindow" Height="540" Width="1200" WindowStartupLocation="CenterScreen">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ContentControl Content="{Binding}" Grid.Column="1" Margin="0,0,0,0" Grid.Row="1" Grid.RowSpan="8" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Width="Auto"/>
+        <Label x:Name="LblWindowName" Content="Windows Name" Grid.Column="1" FontSize="24"/>
+        <StackPanel Grid.Row="1" Margin="0, 2, 0, 0">
+            <Button Grid.Row="1" Name="btnEmployee" Height="50" Width="250" HorizontalAlignment="Left">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Employee" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2" Margin="0, 2, 0, 0">
+            <Button Grid.Row="2" Name="btnTask" Height="50" Width="250" HorizontalAlignment="Left">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Task" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Margin="0, 2, 0, 0">
+            <Button Grid.Row="3" Name="btnSalary" Height="50" Width="250" HorizontalAlignment="Left">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Task" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Margin="0, 2, 0, 0">
+            <Button Grid.Row="4" Name="btnPermission" Height="50" Width="250" HorizontalAlignment="Left">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Permission" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Margin="0, 2, 0, 0">
+            <Button Grid.Row="5" Name="btnDepartment" Height="50" Width="250" HorizontalAlignment="Left" Click="btnDepartment_Click">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Department" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Margin="0, 2, 0, 0">
+            <Button Grid.Row="6" Name="btnPosition" Height="50" Width="250" HorizontalAlignment="Left">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Position" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="7" Margin="0, 2, 0, 0">
+            <Button Grid.Row="7" Name="btnLogout" Height="50" Width="250" HorizontalAlignment="Left">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="LogOut" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="8" Margin="0, 2, 0, 0">
+            <Button Grid.Row="8" Name="btnExit" Height="50" Width="250" HorizontalAlignment="Left">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Exit" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
+                </Grid>
+            </Button>
+        </StackPanel>
     </Grid>
+    <Window.Resources>
+        <DataTemplate x:Name="DepartmentTemplate" DataType="{x:Type vievmodels:DepartmentViewModel}">
+            <views:DepartmentList>
+                
+            </views:DepartmentList>
+        </DataTemplate>
+    </Window.Resources>
 </Window>

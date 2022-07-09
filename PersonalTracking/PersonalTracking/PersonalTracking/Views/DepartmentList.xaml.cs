@@ -1,10 +1,8 @@
 ﻿using PersonalTracking.DB;
-using PersonalTracking.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,22 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PersonalTracking
+namespace PersonalTracking.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DepartmentList.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DepartmentList : UserControl
     {
-        public MainWindow()
+        public DepartmentList()
         {
             InitializeComponent();
-        }
-
-        private void btnDepartment_Click(object sender, RoutedEventArgs e)
-        {
-            LblWindowName.Content = "Department List";
-            DataContext = new DepartmentViewModel();
+            using (PERSONELTRACKINGContext db = new PERSONELTRACKINGContext())
+            {
+                List<Department> list = db.Departments.ToList();
+                gridDepartment.ItemsSource = list;
+            }
         }
     }
 }
