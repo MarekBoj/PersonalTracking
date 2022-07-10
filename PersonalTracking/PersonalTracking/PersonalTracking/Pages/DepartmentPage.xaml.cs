@@ -1,4 +1,5 @@
 ﻿using PersonalTracking.DB;
+using PersonalTracking.Models;
 using PersonalTracking.Views;
 using System;
 using System.Collections.Generic;

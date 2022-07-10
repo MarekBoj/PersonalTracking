@@ -32,5 +32,17 @@ namespace PersonalTracking
             LblWindowName.Content = "Department List";
             DataContext = new DepartmentViewModel();
         }
+
+        private void btnPosition_Click(object sender, RoutedEventArgs e)
+        {
+            LblWindowName.Content = "Position List";
+            DataContext = new PositionViewModel();
+        }
+
+        private void btnEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            LblWindowName.Content = "Employee List";
+            DataContext = new EmployeeViewModel();
+        }
     }
 }

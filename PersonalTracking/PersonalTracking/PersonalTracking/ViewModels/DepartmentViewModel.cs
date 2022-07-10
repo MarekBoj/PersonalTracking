@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PersonalTracking.ViewModels
 {
-    class DepartmentViewModel
+    public class DepartmentViewModel
     {
     }
 }

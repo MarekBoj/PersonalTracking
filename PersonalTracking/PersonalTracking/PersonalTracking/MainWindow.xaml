@@ -27,7 +27,7 @@
         <ContentControl Content="{Binding}" Grid.Column="1" Margin="0,0,0,0" Grid.Row="1" Grid.RowSpan="8" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Width="Auto"/>
         <Label x:Name="LblWindowName" Content="Windows Name" Grid.Column="1" FontSize="24"/>
         <StackPanel Grid.Row="1" Margin="0, 2, 0, 0">
-            <Button Grid.Row="1" Name="btnEmployee" Height="50" Width="250" HorizontalAlignment="Left">
+            <Button Grid.Row="1" Name="btnEmployee" Height="50" Width="250" HorizontalAlignment="Left" Click="btnEmployee_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -83,7 +83,7 @@
             </Button>
         </StackPanel>
         <StackPanel Grid.Row="6" Margin="0, 2, 0, 0">
-            <Button Grid.Row="6" Name="btnPosition" Height="50" Width="250" HorizontalAlignment="Left">
+            <Button Grid.Row="6" Name="btnPosition" Height="50" Width="250" HorizontalAlignment="Left" Click="btnPosition_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -117,10 +117,21 @@
         </StackPanel>
     </Grid>
     <Window.Resources>
+        
         <DataTemplate x:Name="DepartmentTemplate" DataType="{x:Type vievmodels:DepartmentViewModel}">
             <views:DepartmentList>
-                
+               
             </views:DepartmentList>
+        </DataTemplate>
+        <DataTemplate x:Name="PositionTemplate" DataType="{x:Type vievmodels:PositionViewModel}">
+            <views:PositionList>
+
+            </views:PositionList>
+        </DataTemplate>
+        <DataTemplate x:Name="EmployeeTemplate" DataType="{x:Type vievmodels:EmployeeViewModel}">
+            <views:EmployeeListView>
+
+            </views:EmployeeListView>
         </DataTemplate>
     </Window.Resources>
 </Window>
