@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:PersonalTracking.Views"
         xmlns:vievmodels="clr-namespace:PersonalTracking.ViewModels"
         mc:Ignorable="d"
-        Title="WPF Personal Tracking" Name="PersonaMainWindow" Height="540" Width="1200" WindowStartupLocation="CenterScreen">
+        Title="WPF Personal Tracking" Name="PersonaMainWindow" Height="540" Width="1200" WindowStartupLocation="CenterScreen" Background="White">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -25,7 +25,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <ContentControl Content="{Binding}" Grid.Column="1" Margin="0,0,0,0" Grid.Row="1" Grid.RowSpan="8" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Width="Auto"/>
-        <Label x:Name="LblWindowName" Content="Windows Name" Grid.Column="1" FontSize="24"/>
+        <Label x:Name="LblWindowName" Content="Windows Name" Grid.Column="1" FontSize="24" FontStyle="Italic" FontStretch="Normal" FontWeight="Normal" Background="White" Margin="0,0,0,10"/>
         <StackPanel Grid.Row="1" Margin="0, 2, 0, 0">
             <Button x:Name="btnEmployee" Height="50" Width="250" Click="btnEmployee_Click">
                 <Grid Width="230">
@@ -61,7 +61,7 @@
         </StackPanel>
         <StackPanel Grid.Row="7" Margin="0, 2, 0, 0"/>
         <StackPanel Grid.Row="8" Margin="0, 2, 0, 0">
-            <Button Grid.Row="8" Name="btnExit" Height="50" Width="250" HorizontalAlignment="Left" Click="btnExit_Click">
+            <Button Grid.Row="8" Name="btnExit" Height="32" Width="128" HorizontalAlignment="Left" Click="btnExit_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -73,10 +73,10 @@
         </StackPanel>
     </Grid>
     <Window.Resources>
-        
+
         <DataTemplate x:Name="DepartmentTemplate" DataType="{x:Type vievmodels:DepartmentViewModel}">
             <views:DepartmentList>
-               
+
             </views:DepartmentList>
         </DataTemplate>
         <DataTemplate x:Name="PositionTemplate" DataType="{x:Type vievmodels:PositionViewModel}">
