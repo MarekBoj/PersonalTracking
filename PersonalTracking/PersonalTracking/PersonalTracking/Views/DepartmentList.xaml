@@ -17,9 +17,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Margin="40,5,40,5" Name="btnAdd" Content="Add" FontSize="18" FontWeight="Bold" Click="btnAdd_Click"/>
-            <Button Margin="40,5,40,5" Name="btnUpdate" Content="Update" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnUpdate_Click"/>
-            <Button Margin="40,5,40,5" Name="btnDelete" Content="Delete" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
+            <Button Margin="133,5,213,5" Name="btnAdd" Content="Add" FontSize="18" FontWeight="Bold" Click="btnAdd_Click" Grid.ColumnSpan="2"/>
+            <Button Margin="213,5,133,5" Name="btnUpdate" Content="Update" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnUpdate_Click" Grid.ColumnSpan="2"/>
         </Grid>
         <DataGrid x:Name="gridDepartment" IsReadOnly="True" AutoGenerateColumns="False" SelectionUnit="FullRow">
             <DataGrid.Columns>

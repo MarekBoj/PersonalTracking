@@ -27,7 +27,7 @@
         <ContentControl Content="{Binding}" Grid.Column="1" Margin="0,0,0,0" Grid.Row="1" Grid.RowSpan="8" HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Stretch" Width="Auto"/>
         <Label x:Name="LblWindowName" Content="Windows Name" Grid.Column="1" FontSize="24"/>
         <StackPanel Grid.Row="1" Margin="0, 2, 0, 0">
-            <Button Grid.Row="1" Name="btnEmployee" Height="50" Width="250" HorizontalAlignment="Left" Click="btnEmployee_Click">
+            <Button x:Name="btnEmployee" Height="50" Width="250" Click="btnEmployee_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -37,42 +37,8 @@
                 </Grid>
             </Button>
         </StackPanel>
-        
         <StackPanel Grid.Row="2" Margin="0, 2, 0, 0">
-            <Button Grid.Row="2" Name="btnTask" Height="50" Width="250" HorizontalAlignment="Left">
-                <Grid Width="230">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Task" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
-                </Grid>
-            </Button>
-        </StackPanel>
-        <StackPanel Grid.Row="3" Margin="0, 2, 0, 0">
-            <Button Grid.Row="3" Name="btnSalary" Height="50" Width="250" HorizontalAlignment="Left">
-                <Grid Width="230">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Task" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
-                </Grid>
-            </Button>
-        </StackPanel>
-        <StackPanel Grid.Row="4" Margin="0, 2, 0, 0">
-            <Button Grid.Row="4" Name="btnPermission" Height="50" Width="250" HorizontalAlignment="Left">
-                <Grid Width="230">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Permission" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
-                </Grid>
-            </Button>
-        </StackPanel>
-        <StackPanel Grid.Row="5" Margin="0, 2, 0, 0">
-            <Button Grid.Row="5" Name="btnDepartment" Height="50" Width="250" HorizontalAlignment="Left" Click="btnDepartment_Click">
+            <Button x:Name="btnDepartment" Height="50" Width="250" Click="btnDepartment_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -82,8 +48,8 @@
                 </Grid>
             </Button>
         </StackPanel>
-        <StackPanel Grid.Row="6" Margin="0, 2, 0, 0">
-            <Button Grid.Row="6" Name="btnPosition" Height="50" Width="250" HorizontalAlignment="Left" Click="btnPosition_Click">
+        <StackPanel Grid.Row="3" Margin="0, 2, 0, 0">
+            <Button x:Name="btnPosition" Height="50" Width="250" Click="btnPosition_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -93,19 +59,9 @@
                 </Grid>
             </Button>
         </StackPanel>
-        <StackPanel Grid.Row="7" Margin="0, 2, 0, 0">
-            <Button Grid.Row="7" Name="btnLogout" Height="50" Width="250" HorizontalAlignment="Left">
-                <Grid Width="230">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="LogOut" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Margin="80,0,0,0"/>
-                </Grid>
-            </Button>
-        </StackPanel>
+        <StackPanel Grid.Row="7" Margin="0, 2, 0, 0"/>
         <StackPanel Grid.Row="8" Margin="0, 2, 0, 0">
-            <Button Grid.Row="8" Name="btnExit" Height="50" Width="250" HorizontalAlignment="Left">
+            <Button Grid.Row="8" Name="btnExit" Height="50" Width="250" HorizontalAlignment="Left" Click="btnExit_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>

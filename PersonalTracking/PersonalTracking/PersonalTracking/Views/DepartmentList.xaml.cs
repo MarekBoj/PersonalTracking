@@ -1,5 +1,7 @@
 ﻿using PersonalTracking.DB;
+using Microsoft.EntityFrameworkCore;
 using PersonalTracking.Windows;
+using PersonalTracking.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

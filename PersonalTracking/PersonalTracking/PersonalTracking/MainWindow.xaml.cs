@@ -44,5 +44,11 @@ namespace PersonalTracking
             LblWindowName.Content = "Employee List";
             DataContext = new EmployeeViewModel();
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+
+        }
     }
 }
