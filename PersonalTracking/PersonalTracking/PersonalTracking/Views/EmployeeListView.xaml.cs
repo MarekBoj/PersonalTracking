@@ -1,6 +1,10 @@
-﻿using PersonalTracking.Pages;
+﻿using Microsoft.EntityFrameworkCore;
+using PersonalTracking.DB;
+using PersonalTracking.Models;
+using PersonalTracking.Pages;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +32,78 @@ namespace PersonalTracking.Views
         {
             EmployeePage page = new EmployeePage();
             page.ShowDialog();
+        }
+
+        PERSONELTRACKINGContext db = new PERSONELTRACKINGContext();
+        List<Position> positions = new List<Position>();
+        List<EmployeeModel> list = new List<EmployeeModel>();
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            cmbDepartment.ItemsSource = db.Departments.ToList();
+            cmbDepartment.DisplayMemberPath = "DepartmentName";
+            cmbDepartment.SelectedValuePath = "Id";
+            cmbDepartment.SelectedIndex = -1;
+            positions = db.Positions.ToList();
+            cmbPosition.ItemsSource = positions;
+            cmbPosition.DisplayMemberPath = "PositionName";
+            cmbPosition.SelectedValuePath = "Id";
+            cmbPosition.SelectedIndex = -1;
+            list = db.Employees.Include(x => x.Position).Include(X => X.Department).Select(X => new EmployeeModel()
+            {
+                Id = X.Id,
+                Name = X.Name,
+                Adress = X.Adress,
+                BirthDay = (DateTime)X.Birthday,
+                DepartmentId = X.DepartmentId,
+                DepartmentName = X.Department.DepartmentName,
+                isAdmin = X.IsAdmin,
+                Password = X.Password,
+                PositionId = X.PositionId,
+                PositionName = X.Position.PositionName,
+                Salary=X.Salary,
+                Surname=X.Surname,
+                UserNo=X.UserNo,
+            }).ToList();
+            gridEmployee.ItemsSource = list;
+
+        }
+
+        private void cmbDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int DepartmentId = Convert.ToInt32(cmbDepartment.SelectedValue);
+            if(cmbDepartment.SelectedIndex != -1)
+            {
+                cmbPosition.ItemsSource = positions.Where(x => x.DepartmentId == DepartmentId).ToList();
+                cmbPosition.DisplayMemberPath = "PositionName";
+                cmbPosition.SelectedValuePath = "Id";
+                cmbPosition.SelectedIndex = -1;
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            List<EmployeeModel> searchlist = list;
+            if (txtUserNo.Text.Trim() != "") searchlist = searchlist.Where(x => x.UserNo == Convert.ToInt32(txtUserNo.Text)).ToList();
+            if (txtName.Text.Trim() != "") searchlist = searchlist.Where(x => x.Name.Contains(txtName.Text)).ToList();
+            if (txtSurname.Text.Trim() != "") searchlist = searchlist.Where(x => x.Surname.Contains(txtSurname.Text)).ToList();
+            if (cmbPosition.SelectedIndex != -1) 
+                searchlist = searchlist.Where(x => x.PositionId == Convert.ToInt32(cmbPosition.SelectedValue)).ToList();
+            if (cmbDepartment.SelectedIndex != -1)
+                searchlist = searchlist.Where(x => x.DepartmentId == Convert.ToInt32(cmbDepartment.SelectedValue)).ToList();
+            gridEmployee.ItemsSource = searchlist;
+
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            txtName.Clear();
+            txtUserNo.Clear();
+            txtSurname.Clear();
+            cmbDepartment.SelectedIndex = -1;
+            cmbPosition.SelectedIndex = -1;
+            cmbPosition.ItemsSource = positions;
+            gridEmployee.ItemsSource = list;
+
         }
     }
 }
