@@ -34,6 +34,7 @@
                 <DataGridTextColumn Header="BirthDay" Width="*" Binding="{Binding BirthDay}" Visibility="Hidden" />
                 <DataGridTextColumn Header="Adress" Width="*" Binding="{Binding Adress}" Visibility="Hidden" />
                 <DataGridTextColumn Header="Password" Width="*" Binding="{Binding Password}" Visibility="Hidden" />
+                <DataGridTextColumn Header="ImagePath" Width="*" Binding="{Binding ImagePath}" Visibility="Hidden" />
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.ColumnSpan="5">
@@ -63,8 +64,8 @@
             <Button Grid.Column="4" Grid.Row="1" Content="Clear" Name="btnClear" Margin="20,5,10,5" Click="btnClear_Click"/>
         </Grid>
         <Button Margin="40,5,40,5" Name="btnAdd" Content="Add" FontSize="18" FontWeight="Bold" Grid.Row="2" Grid.Column="1" Click="btnAdd_Click"/>
-        <Button Margin="40,5,40,5" Name="btnUpdate" Content="Update" FontSize="18" FontWeight="Bold" Grid.Row="2" Grid.Column="2"/>
-        <Button Margin="40,5,40,5" Name="btnDelete" Content="Delete" FontSize="18" FontWeight="Bold" Grid.Row="3" Grid.Column="3"/>
+        <Button Margin="40,5,40,5" Name="btnUpdate" Content="Update" FontSize="18" FontWeight="Bold" Grid.Row="2" Grid.Column="2" Click="btnUpdate_Click"/>
+        <Button Margin="40,5,40,5" Name="btnDelete" Content="Delete" FontSize="18" FontWeight="Bold" Grid.Row="3" Grid.Column="3" Click="btnDelete_Click"/>
     </Grid>
 </UserControl>
 

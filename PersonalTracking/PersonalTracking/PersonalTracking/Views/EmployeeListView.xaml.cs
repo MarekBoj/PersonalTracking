@@ -32,6 +32,7 @@ namespace PersonalTracking.Views
         {
             EmployeePage page = new EmployeePage();
             page.ShowDialog();
+            FillDatagrid();
         }
 
         PERSONELTRACKINGContext db = new PERSONELTRACKINGContext();
@@ -39,33 +40,7 @@ namespace PersonalTracking.Views
         List<EmployeeModel> list = new List<EmployeeModel>();
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            cmbDepartment.ItemsSource = db.Departments.ToList();
-            cmbDepartment.DisplayMemberPath = "DepartmentName";
-            cmbDepartment.SelectedValuePath = "Id";
-            cmbDepartment.SelectedIndex = -1;
-            positions = db.Positions.ToList();
-            cmbPosition.ItemsSource = positions;
-            cmbPosition.DisplayMemberPath = "PositionName";
-            cmbPosition.SelectedValuePath = "Id";
-            cmbPosition.SelectedIndex = -1;
-            list = db.Employees.Include(x => x.Position).Include(X => X.Department).Select(X => new EmployeeModel()
-            {
-                Id = X.Id,
-                Name = X.Name,
-                Adress = X.Adress,
-                BirthDay = (DateTime)X.Birthday,
-                DepartmentId = X.DepartmentId,
-                DepartmentName = X.Department.DepartmentName,
-                isAdmin = X.IsAdmin,
-                Password = X.Password,
-                PositionId = X.PositionId,
-                PositionName = X.Position.PositionName,
-                Salary=X.Salary,
-                Surname=X.Surname,
-                UserNo=X.UserNo,
-            }).ToList();
-            gridEmployee.ItemsSource = list;
-
+            FillDatagrid();
         }
 
         private void cmbDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -104,6 +79,62 @@ namespace PersonalTracking.Views
             cmbPosition.ItemsSource = positions;
             gridEmployee.ItemsSource = list;
 
+        }
+        void FillDatagrid()
+        {
+            cmbDepartment.ItemsSource = db.Departments.ToList();
+            cmbDepartment.DisplayMemberPath = "DepartmentName";
+            cmbDepartment.SelectedValuePath = "Id";
+            cmbDepartment.SelectedIndex = -1;
+            positions = db.Positions.ToList();
+            cmbPosition.ItemsSource = positions;
+            cmbPosition.DisplayMemberPath = "PositionName";
+            cmbPosition.SelectedValuePath = "Id";
+            cmbPosition.SelectedIndex = -1;
+            list = db.Employees.Include(x => x.Position).Include(X => X.Department).Select(X => new EmployeeModel()
+            {
+                Id = X.Id,
+                Name = X.Name,
+                Adress = X.Adress,
+                BirthDay = (DateTime)X.Birthday,
+                DepartmentId = X.DepartmentId,
+                DepartmentName = X.Department.DepartmentName,
+                isAdmin = X.IsAdmin,
+                Password = X.Password,
+                PositionId = X.PositionId,
+                PositionName = X.Position.PositionName,
+                Salary = X.Salary,
+                Surname = X.Surname,
+                UserNo = X.UserNo,
+                ImagePath = X.ImagePath
+            }).ToList();
+            gridEmployee.ItemsSource = list;
+        }
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeModel model = (EmployeeModel)gridEmployee.SelectedItem;
+            if (model != null && model.Id != 0)
+            {
+                EmployeePage page = new EmployeePage();
+                page.model = model;
+                page.ShowDialog();
+                FillDatagrid();
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeModel model = (EmployeeModel)gridEmployee.SelectedItem;
+            if(model!=null && model.Id != 0)
+            {
+                if(MessageBox.Show("Are you sure to delete this employee?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    Employee employee = db.Employees.Find(model.Id);
+                    db.Employees.Remove(employee);
+                    db.SaveChanges();
+                    FillDatagrid();
+                }
+            }
         }
     }
 }

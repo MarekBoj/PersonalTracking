@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PersonalTracking.Models
 {
-    class EmployeeModel
+    public class EmployeeModel
     {
         public int Id { get; set; }
         public int UserNo { get; set; }
@@ -19,6 +19,8 @@ namespace PersonalTracking.Models
         public DateTime BirthDay { get; set; }
         public string Adress { get; set; }
         public string Password { get; set; }
+        public string ImagePath { get; set; }
+
 
     }
 }
